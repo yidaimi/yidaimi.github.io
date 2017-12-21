@@ -9,22 +9,69 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-
+        <!--vue.js依赖-->
         <script src="https://unpkg.com/vue/dist/vue.js"></script>
-        <!--
-        <script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
-        -->
         <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <!--cordova依赖-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
         <script>
             function whatever(){
                 alert('This is whatever');
             }
 
         </script>
+        <!--测试cordova的代码-->
+        <script type="text/javascript">
+        
+     				var destinationType;
+             
+            function onLoad() {
+            
+    						document.addEventListener("deviceready", onDeviceReady, false);
+						}
+            
 
+            //Cordova加载完成会触发
+            function onDeviceReady() {
+                destinationType=navigator.camera.DestinationType;
+                document.addEventListener("backbutton", onBackKeyDown, false);
+            }
+
+            //拍照
+            function capturePhoto() {
+                
+                //拍照并获取Base64编码的图像（quality : 存储图像的质量，范围是[0,100]）
+                navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+                                            destinationType: destinationType.DATA_URL }
+                                            );
+            }
+         
+            //拍照成功
+            function onPhotoDataSuccess(imageData) {
+                console.log(imageData);
+                var smallImage = document.getElementById('smallImage');
+                smallImage.style.display = 'block';
+                smallImage.src = "data:image/jpeg;base64," + imageData;
+            }
+ 
+            //拍照失败
+            function onFail(message) {
+                alert('拍照失败: ' + message);
+            }
+
+    				function onBackKeyDown(){
+    						alert('back!!!');
+    				}
+        
+        
+        </script> 
+        
+        
+        
     </head>
     <body>
-
+        <!-- vue.js测试代码开始-->
         <div id="app">
             <h1>Hello App!</h1>
             <p>
@@ -35,7 +82,18 @@
 
             <router-view></router-view>
         </div>
-
+        <!-- vue.js测试代码结束-->
+        <!-- cordova测试代码开始 -->
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready!!!This is from Server</p>
+                <button onclick="capturePhoto();">take photo</button>
+                <img style="display:none;width:240px;height:320px;" id="smallImage" src="" />
+            </div>
+        </div>        
+         <!-- cordova测试代码结束 -->
 
         <script>
 
@@ -71,7 +129,6 @@
 
             // 现在，应用已经启动了！
         </script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+
     </body>
 </html>
