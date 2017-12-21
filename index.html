@@ -1,98 +1,73 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
+
     <head>
+
+        <meta charset="UTF-8"> <!-- for HTML5 -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
         <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
+        <script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
         -->
-        
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-        
-     				var destinationType;
-             
-            function onLoad() {
-            		alert('This is onload');
-    						document.addEventListener("deviceready", onDeviceReady, false);
-						}
-            
-
-            //Cordova加载完成会触发
-            function onDeviceReady() {
-                destinationType=navigator.camera.DestinationType;
-                document.addEventListener("backbutton", onBackKeyDown, false);
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <script>
+            function whatever(){
+                alert('This is whatever');
             }
 
-            //拍照
-            function capturePhoto() {
-                
-                //拍照并获取Base64编码的图像（quality : 存储图像的质量，范围是[0,100]）
-                navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-                                            destinationType: destinationType.DATA_URL }
-                                            );
-            }
-         
-            //拍照成功
-            function onPhotoDataSuccess(imageData) {
-                console.log(imageData);
-                var smallImage = document.getElementById('smallImage');
-                smallImage.style.display = 'block';
-                smallImage.src = "data:image/jpeg;base64," + imageData;
-            }
- 
-            //拍照失败
-            function onFail(message) {
-                alert('拍照失败: ' + message);
-            }
+        </script>
 
-    				function onBackKeyDown(){
-    						alert('back!!!');
-    				}
-        
-        
-        </script>        
-        <title>Hello World</title>
     </head>
-    <body onload="onLoad()">
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready!!!This is from Server</p>
-                <button onclick="capturePhoto();">take photo</button>
-                <img style="display:none;width:240px;height:320px;" id="smallImage" src="" />
-            </div>
+    <body>
+
+        <div id="app">
+            <h1>Hello App!</h1>
+            <p>
+
+                <router-link to="/foo">Go to Foo</router-link>
+                <router-link to="/bar">Go to Bar</router-link>
+            </p>
+
+            <router-view></router-view>
         </div>
+
+
+        <script>
+
+            // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
+
+            // 1. 定义（路由）组件。
+            // 可以从其他文件 import 进来
+            const Foo = { template: '<div>foo</div>' }
+            const Bar = { template: "<button onclick='whatever()'>bar</button>" }
+
+            // 2. 定义路由
+            // 每个路由应该映射一个组件。 其中"component" 可以是
+            // 通过 Vue.extend() 创建的组件构造器，
+            // 或者，只是一个组件配置对象。
+            // 我们晚点再讨论嵌套路由。
+            const routes = [
+                { path: '/foo', redirect:'http://www.baidu.com' },
+                { path: '/bar', component: Bar }
+            ]
+
+            // 3. 创建 router 实例，然后传 `routes` 配置
+            // 你还可以传别的配置参数, 不过先这么简单着吧。
+            const router = new VueRouter({
+                routes // （缩写）相当于 routes: routes
+            })
+
+            // 4. 创建和挂载根实例。
+            // 记得要通过 router 配置参数注入路由，
+            // 从而让整个应用都有路由功能
+            const app = new Vue({
+                router
+            }).$mount('#app')
+
+            // 现在，应用已经启动了！
+        </script>
 
     </body>
 </html>
-
