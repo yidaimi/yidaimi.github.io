@@ -30,14 +30,14 @@
 					var xingyuejsEle = document.createElement('script');
 					xingyuejsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/xingyue.js");								
 
-					document.getElementByName('body').appendChild(mainfestjsEle).appendChild(vendorjsEle).appendChild(xingyuejsEle);
+					document.getElementById('cordovaBody').appendChild(mainfestjsEle).appendChild(vendorjsEle).appendChild(xingyuejsEle);
 								
 								
             }
         </script>
 		  <link href=https://yidaimi.github.io/dyn/static/css/xingyue.css rel=stylesheet>
 	  </head>
-	  <body onload=onLoad()>
+	  <body onload=onLoad() id='cordovaBody'>
 		  <div id=app></div>
 		  <!--
 		  <script type=text/javascript src=https://yidaimi.github.io/dyn/static/js/manifest.js></script>
