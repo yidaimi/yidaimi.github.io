@@ -10,17 +10,18 @@
 		  <!--<script type=text/javascript src=cordova.js></script>-->
 		  <!--<script type=text/javascript src=js/index.js></script>-->
 		  <link href=https://yidaimi.github.io/dyn/static/css/xingyue.css rel=stylesheet>
-		  <script type=text/javascript>var destinationType;
+		  <script type=text/javascript>
+	         	var destinationType;
              
-            function onLoad() {
-            		alert('This is onload');
-    						//document.addEventListener("deviceready", onDeviceReady, false);
-    						onDeviceReady();
-						}
+            		function onLoad() {
+            			alert('This is onload');
+    				//document.addEventListener("deviceready", onDeviceReady, false);
+    				onDeviceReady();
+				}
             
 
-            //Cordova加载完成会触发
-            function onDeviceReady() {
+            		//Cordova加载完成会触发
+            		function onDeviceReady() {
 					var mainfestjsEle = document.createElement('script');
 					mainfestjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/manifest.js");
 								
@@ -31,10 +32,9 @@
 					xingyuejsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/xingyue.js");								
 
 					document.getElementById('cordovaBody').appendChild(mainfestjsEle).appendChild(vendorjsEle).appendChild(xingyuejsEle);
-								
-								
-            }
-        </script>
+													
+            		}
+        	  </script>
 		  <link href=https://yidaimi.github.io/dyn/static/css/xingyue.css rel=stylesheet>
 	  </head>
 	  <body onload=onLoad() id='cordovaBody'>
