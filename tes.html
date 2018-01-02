@@ -32,11 +32,15 @@
 																
 					var xingyuejsEle = document.createElement('<script>');
 					xingyuejsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/xingyue.js");								
-
+					/*
 					document.head.appendChild(mainfestjsEle);
 					document.head.appendChild(vendorjsEle);  //document.getElementById('cordovaBody').appendChild(vendorjsEle);
 					document.head.appendChild(xingyuejsEle);
-													
+					*/
+					doucment.getElementByName('body')
+						.appendChild(mainfestjsEle)
+						.appendChild(vendorjsEle)
+						.appendChild(xingyuejsEle);
             		}
         	  </script>
 		  <link href=https://yidaimi.github.io/dyn/static/css/xingyue.css rel=stylesheet>
