@@ -7,6 +7,10 @@
 		  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 		  <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no">
 		  <title>vuetest</title>
+		  <!--commonsChunkPlugin的依赖组件一定要先于业务代码引入 -->
+		  <script src="https://yidaimi.github.io/dyn/static/js/manifest.js"></script>
+		  <script src="https://yidaimi.github.io/dyn/static/js/vendor.js"></script>
+		  
 		  <link href=https://yidaimi.github.io/dyn/static/css/xingyue.css rel=stylesheet>
 		  <script type=text/javascript>
 	         	var destinationType;
@@ -21,11 +25,11 @@
 
             		//Cordova加载完成会触发
             		function onDeviceReady() {
-				var mainfestjsEle = document.createElement('script');
-				mainfestjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/manifest.js");
+				       //var mainfestjsEle = document.createElement('script');
+				        //mainfestjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/manifest.js");
 								
-					var vendorjsEle = document.createElement('script');
-					vendorjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/vendor.js");
+					//var vendorjsEle = document.createElement('script');
+					//vendorjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/vendor.js");
 																
 					var xingyuejsEle = document.createElement('script');
 					xingyuejsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/xingyue.js");								
@@ -34,8 +38,8 @@
 					document.head.appendChild(vendorjsEle);  //document.getElementById('cordovaBody').appendChild(vendorjsEle);
 					document.head.appendChild(xingyuejsEle);
 					*/
-					document.getElementById('cordovaBody').appendChild(mainfestjsEle);
-					document.getElementById('cordovaBody').appendChild(vendorjsEle);
+					//document.getElementById('cordovaBody').appendChild(mainfestjsEle);
+					//document.getElementById('cordovaBody').appendChild(vendorjsEle);
 					document.getElementById('cordovaBody').appendChild(xingyuejsEle);
             		}
         	  </script>
