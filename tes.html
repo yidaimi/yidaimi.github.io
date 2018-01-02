@@ -32,9 +32,9 @@
 					var xingyuejsEle = document.createElement('script');
 					xingyuejsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/xingyue.js");								
 
-					document.getElementById('cordovaBody').appendChild(mainfestjsEle);
-					document.getElementById('cordovaBody').appendChild(vendorjsEle);
-					document.getElementById('cordovaBody').appendChild(xingyuejsEle);
+					document.head.appendChild(mainfestjsEle);
+					document.head.appendChild(vendorjsEle);  //document.getElementById('cordovaBody').appendChild(vendorjsEle);
+					document.head.appendChild(xingyuejsEle);
 													
             		}
         	  </script>
