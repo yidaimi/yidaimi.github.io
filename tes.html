@@ -1,52 +1,51 @@
 <!DOCTYPE html>
-  <html>
-	  <head>
-		  <meta charset=utf-8>
-		  <meta name=format-detection content="telephone=no">
-		  <meta name=msapplication-tap-highlight content=no>
-		  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-		  <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no">
-		  <title>vuetest</title>
-		  <!--<link rel=stylesheet type=text/css href=css/index.css>-->
-		  <!--<script type=text/javascript src=cordova.js></script>-->
-		  <!--<script type=text/javascript src=js/index.js></script>-->
-		  <link href=https://yidaimi.github.io/dyn/static/css/xingyue.css rel=stylesheet>
-		  <script type=text/javascript>
-	         	var destinationType;
-             
-            		function onLoad() {
-            			alert('This is onload');
-    				//document.addEventListener("deviceready", onDeviceReady, false);
-    				onDeviceReady();
-				alert('onload success!!!');
-				}
-            
+<html>
+	<head>
+		<meta charset=utf-8>
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no">
+		<title>vuetest</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+		<link href=https://yidaimi.github.io/dyn/static/css/xingyue.css rel=stylesheet>
 
-            		//Cordova加载完成会触发
-            		function onDeviceReady() {
-				var mainfestjsEle = document.createElement('<script>');
-				mainfestjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/manifest.js");
-								
-					var vendorjsEle = document.createElement('<script>');
-					vendorjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/vendor.js");
-																
-					var xingyuejsEle = document.createElement('<script>');
-					xingyuejsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/xingyue.js");								
-					/*
-					document.head.appendChild(mainfestjsEle);
-					document.head.appendChild(vendorjsEle);  //document.getElementById('cordovaBody').appendChild(vendorjsEle);
-					document.head.appendChild(xingyuejsEle);
-					*/
-					document.getElementById('cordovaBody')
-						.appendChild(mainfestjsEle)
-						.appendChild(vendorjsEle)
-						.appendChild(xingyuejsEle);
-            		}
-        	  </script>
-		  
-	  </head>
-	  <body onload=onLoad() id='cordovaBody'>
-		  <div id=app></div>
+       <script type="text/javascript">
 
-	  </body>
+     				var destinationType;
+
+            function onLoad() {
+            		alert('This is onload');
+    						//document.addEventListener("deviceready", onDeviceReady, false);
+    						onDeviceReady();
+						}
+
+
+            //Cordova加载完成会触发
+            function onDeviceReady() {
+								var mainfestjsEle = document.createElement('<script>');
+								mainfestjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/manifest.js");
+
+								var vendorjsEle = document.createElement('<script>');
+								vendorjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/vendor.js");
+
+								var xingyuejsEle = document.createElement('<script>');
+								xingyuejsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/xingyue.js");
+
+								document.getElementByName('body').appendChild(mainfestjsEle).appendChild(vendorjsEle).appendChild(xingyuejsEle);
+
+
+            }
+
+        </script>
+
+
+	</head>
+
+	<body onload="onLoad()">
+		<div id=app></div>
+
+	</body>
 </html>
