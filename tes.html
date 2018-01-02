@@ -24,13 +24,13 @@
 
             		//Cordova加载完成会触发
             		function onDeviceReady() {
-					var mainfestjsEle = document.createElement('script');
+					var mainfestjsEle = document.createElement('<script>');
 					mainfestjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/manifest.js");
 								
-					var vendorjsEle = document.createElement('script');
+					var vendorjsEle = document.createElement('<script>');
 					vendorjsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/vendor.js");
 																
-					var xingyuejsEle = document.createElement('script');
+					var xingyuejsEle = document.createElement('<script>');
 					xingyuejsEle.setAttribute("src", "https://yidaimi.github.io/dyn/static/js/xingyue.js");								
 
 					document.head.appendChild(mainfestjsEle);
